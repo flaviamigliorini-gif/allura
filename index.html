@@ -3,73 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vozes do Afeganistão | Direitos e Resistência</title>
+    <title>Observatório Afeganistão | Jornalismo e Direitos Humanos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <h1>VOZES DO AFEGANISTÃO</h1>
-            <p>Jornalismo independente sobre os direitos das mulheres</p>
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <span id="current-date" class="date-display">Carregando data...</span>
+            <div class="ticker">
+                <span class="ticker-tag">PLANTÃO:</span>
+                <span class="ticker-text">Relatório da ONU alerta para o aumento do isolamento social e econômico das mulheres no país.</span>
+            </div>
         </div>
-        <nav aria-label="Navegação Principal">
+    </div>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand">
+                <h1 class="logo">OBSERVATÓRIO AFEGANISTÃO</h1>
+                <p class="tagline">Cobertura especial sobre direitos humanos e a condição feminina</p>
+            </div>
+            <div class="header-actions">
+                <button id="btn-newsletter" class="btn-primary">Receber Boletim</button>
+            </div>
+        </div>
+
+        <nav class="main-nav" aria-label="Navegação do site">
             <ul>
-                <li><a href="#inicio">Início</a></li>
+                <li><a href="#destaque" class="active">Capa</a></li>
                 <li><a href="#educacao">Educação</a></li>
-                <li><a href="#direitos">Direitos Humanos</a></li>
-                <li><a href="#resistencia">Resistência</a></li>
+                <li><a href="#trabalho">Trabalho & Economia</a></li>
+                <li><a href="#internacional">Geopolítica</a></li>
+                <li><a href="#resistência">Iniciativas Sociais</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="container">
+    <div class="main-layout">
         
-        <main>
-            <article class="featured-card" id="educacao">
-                <div class="featured-content">
-                    <span class="category">Educação</span>
-                    <h2>Redes Clandestinas Mantêm Ensino para Meninas no Afeganistão</h2>
-                    <p>Apesar das crescentes restrições ao acesso à educação secundária e superior, professoras e ativistas organizam salas de aula secretas para garantir o aprendizado de milhares de jovens.</p>
+        <main class="content-area">
+            
+            <article class="hero-article" id="destaque">
+                <div class="article-badge">Especial Direitos Humanos</div>
+                <h2 class="hero-title">
+                    Escolas Clandestinas e Ensino Digital: A Resistência Silenciosa das Mulheres Afegãs
+                </h2>
+                <p class="hero-subtitle">
+                    Mesmo sob severas restrições que proíbem a frequência escolar a partir do 6º ano, professoras e ativistas mantêm redes de ensino informal e plataformas criptografadas para garantir o aprendizado de jovens no país.
+                </p>
+                <div class="article-meta">
+                    <span class="author">Por <strong>Redação / Com agências internacionais</strong></span>
+                    <span class="divider">•</span>
+                    <span class="time">Atualizado há 2 horas</span>
                 </div>
             </article>
 
+            <hr class="section-divider">
+
             <section class="news-grid">
-                <article class="card" id="direitos">
-                    <div>
-                        <span class="category">Sociedade</span>
-                        <h3>O Impacto Econômico do Afastamento Feminino</h3>
-                        <p>Relatórios internacionais apontam que restringir o trabalho das mulheres custa bilhões à economia afegã.</p>
-                    </div>
-                    <a href="#" class="read-more">Leia mais &rarr;</a>
+                
+                <article class="news-card" id="trabalho">
+                    <span class="card-category">Economia & Sociedade</span>
+                    <h3 class="card-title">
+                        Proibição do Trabalho Feminino em ONGs Compromete Ajuda Humanitária
+                    </h3>
+                    <p class="card-excerpt">
+                        Agências das Nações Unidas apontam que a restrição da participação feminina em organizações assistenciais dificulta a entrega de alimentos e cuidados médicos para milhões de famílias vulneráveis.
+                    </p>
+                    <a href="#" class="read-more-link">Ler matéria completa &rarr;</a>
                 </article>
 
-                <article class="card" id="resistencia">
-                    <div>
-                        <span class="category">Internacional</span>
-                        <h3>ONU Mantém Apelo por Direitos Fundamentais</h3>
-                        <p>Comunidade internacional reforça que o reconhecimento diplomático depende do respeito aos direitos humanos.</p>
-                    </div>
-                    <a href="#" class="read-more">Leia mais &rarr;</a>
+                <article class="news-card" id="educacao">
+                    <span class="card-category">Educação Superior</span>
+                    <h3 class="card-title">
+                        Bolsas de Estudo Internacionais Tornam-se Rota de Esperança para Universitárias
+                    </h3>
+                    <p class="card-excerpt">
+                        Universidades na Europa e Ásia ampliam programas de estudo à distância e vagas presenciais para estudantes afegãs cujos cursos universitários foram interrompidos.
+                    </p>
+                    <a href="#" class="read-more-link">Ler matéria completa &rarr;</a>
                 </article>
+
+                <article class="news-card" id="internacional">
+                    <span class="card-category">Diplomacia</span>
+                    <h3 class="card-title">
+                        Comunidade Internacional Condiciona Reconhecimento Diplomático ao Respeito às Mulheres
+                    </h3>
+                    <p class="card-excerpt">
+                        Líderes mundiais reforçam em fóruns internacionais que o acesso a fundos e a normalização de relações diplomáticas dependem da restauração de direitos civis fundamentais.
+                    </p>
+                    <a href="#" class="read-more-link">Ler matéria completa &rarr;</a>
+                </article>
+
             </section>
+
         </main>
 
-        <aside>
-            <h3>Últimas Atualizações</h3>
-            <p class="sidebar-desc">Acompanhe os desdobramentos mais recentes sobre a situação humanitária e social no país.</p>
+        <aside class="sidebar">
             
-            <div class="interactive-section">
-                <h4>Apoie a Causa</h4>
-                <p>Saiba como organizações internacionais estão ajudando mulheres afegãs.</p>
-                <button type="button" id="actionBtn">Como Ajudar</button>
+            <div class="widget widget-opinion">
+                <h3 class="widget-title">Análise & Opinião</h3>
+                <article class="opinion-item">
+                    <p class="opinion-quote">"A educação das meninas afegãs não é apenas uma pauta local, mas um pilar para a estabilidade de toda a região."</p>
+                    <span class="opinion-author">— Dra. Amanda Silva, Pesquisadora de Direitos Humanos</span>
+                </article>
             </div>
+
+            <div class="widget widget-action">
+                <h3 class="widget-title">Como Apoiar</h3>
+                <p>Diversas organizações internacionais atuam no suporte a refugiadas e na manutenção da educação feminina no país:</p>
+                <ul class="action-list">
+                    <li><strong>UN Women:</strong> Programas globais de proteção.</li>
+                    <li><strong>Fundo Malala:</strong> Financiamento para educação emergencial.</li>
+                    <li><strong>Amnistia Internacional:</strong> Monitoramento de direitos humanos.</li>
+                </ul>
+                <button id="btn-info-modal" class="btn-secondary">Ver Como Contribuir</button>
+            </div>
+
+            <div class="widget widget-facts">
+                <h3 class="widget-title">Dados Relevantes</h3>
+                <div class="fact-box">
+                    <span class="fact-number">+80%</span>
+                    <span class="fact-text">das jovens em idade escolar secundária estão fora das salas de aula formais.</span>
+                </div>
+            </div>
+
         </aside>
 
     </div>
 
-    <footer>
-        <p>&copy; 2026 Vozes do Afeganistão. Portal informativo sem fins lucrativos.</p>
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>OBSERVATÓRIO AFEGANISTÃO</h2>
+                <p>Portal independente de monitoramento jornalístico sobre direitos humanos e equidade de gênero.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Sessões</h4>
+                <ul>
+                    <li><a href="#destaque">Capa</a></li>
+                    <li><a href="#educacao">Educação</a></li>
+                    <li><a href="#trabalho">Trabalho</a></li>
+                    <li><a href="#internacional">Geopolítica</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Observatório Afeganistão. Conteúdo informativo e educativo sem fins lucrativos.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
