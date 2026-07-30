@@ -1,24 +1,33 @@
-/* --- RESET E VARIÁVEIS DE DESIGN --- */
+/* ==========================================================================
+   1. RESET, TIPOGRAFIA E VARIÁVEIS DE DESIGN
+   ========================================================================== */
 :root {
-    --clr-navy-dark: #0b132b;
-    --clr-navy-medium: #1c2541;
-    --clr-red-primary: #b91c1c;
-    --clr-red-hover: #991b1b;
-    --clr-bg-main: #f4f6f8;
-    --clr-bg-card: #ffffff;
-    --clr-text-dark: #1e293b;
-    --clr-text-muted: #64748b;
-    --clr-border: #e2e8f0;
+    /* Paleta de Cores (Estilo Jornalístico) */
+    --clr-navy-dark: #0f172a;      /* Azul escuro profundo para títulos e topo */
+    --clr-navy-medium: #1e293b;    /* Azul médio para barra de navegação */
+    --clr-red-primary: #b91c1c;   /* Vermelho sóbrio para destaques e categorias */
+    --clr-red-hover: #991b1b;     /* Vermelho escuro para estados hover */
+    --clr-bg-main: #f8fafc;      /* Fundo da página em cinza suave */
+    --clr-bg-card: #ffffff;      /* Fundo branco limpo para cartões */
+    --clr-text-dark: #0f172a;    /* Texto principal de alto contraste */
+    --clr-text-muted: #475569;   /* Subtítulos e informações secundárias */
+    --clr-border: #e2e8f0;       /* Bordas e linhas divisórias discretas */
 
+    /* Tipografia */
     --font-serif: 'Georgia', 'Times New Roman', serif;
-    --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
+    /* Arredondamento e Sombras */
     --radius-sm: 4px;
     --radius-md: 8px;
     --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+
+    /* Transições */
+    --transition-fast: 0.2s ease;
 }
 
+/* Reset Global */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -34,9 +43,12 @@ body {
     color: var(--clr-text-dark);
     font-family: var(--font-sans);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- BARRA TOP DE PLANTÃO --- */
+/* ==========================================================================
+   2. BARRA SUPERIOR E CABEÇALHO
+   ========================================================================== */
 .top-bar {
     background-color: var(--clr-navy-dark);
     color: #e2e8f0;
@@ -66,11 +78,12 @@ body {
     color: #ffffff;
     font-weight: 700;
     font-size: 0.7rem;
-    padding: 0.15rem 0.4rem;
+    padding: 0.15rem 0.45rem;
     border-radius: 2px;
+    letter-spacing: 0.5px;
 }
 
-/* --- CABEÇALHO --- */
+/* Header */
 .main-header {
     background-color: var(--clr-bg-card);
     border-bottom: 3px solid var(--clr-navy-dark);
@@ -84,15 +97,16 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1.2rem;
+    gap: 1.25rem;
 }
 
 .logo {
     font-family: var(--font-serif);
-    font-size: 2.2rem;
+    font-size: 2.25rem;
     color: var(--clr-navy-dark);
     line-height: 1.1;
     letter-spacing: -0.5px;
+    font-weight: 800;
 }
 
 .tagline {
@@ -101,6 +115,7 @@ body {
     margin-top: 0.25rem;
 }
 
+/* Navegação Principal */
 .main-nav {
     background-color: var(--clr-navy-medium);
 }
@@ -114,6 +129,11 @@ body {
     display: flex;
     list-style: none;
     overflow-x: auto;
+    scrollbar-width: none; /* Oculta a barra de rolagem em navegadores modernos */
+}
+
+.main-nav ul::-webkit-scrollbar {
+    display: none;
 }
 
 .main-nav a {
@@ -124,16 +144,20 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     white-space: nowrap;
-    transition: background-color 0.2s, color 0.2s;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .main-nav a:hover,
+.main-nav a:focus-visible,
 .main-nav a.active {
     background-color: var(--clr-red-primary);
     color: #ffffff;
+    outline: none;
 }
 
-/* --- BOTÕES --- */
+/* ==========================================================================
+   3. BOTÕES E COMPONENTES INTERATIVOS
+   ========================================================================== */
 .btn-accent {
     background-color: var(--clr-red-primary);
     color: #ffffff;
@@ -143,11 +167,15 @@ body {
     font-size: 0.875rem;
     border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .btn-accent:hover {
     background-color: var(--clr-red-hover);
+}
+
+.btn-accent:active {
+    transform: scale(0.98);
 }
 
 .btn-primary {
@@ -161,14 +189,20 @@ body {
     border-radius: var(--radius-sm);
     cursor: pointer;
     margin-top: 1rem;
-    transition: background-color 0.2s;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .btn-primary:hover {
     background-color: var(--clr-red-primary);
 }
 
-/* --- ESTRUTURA E CONTEÚDO --- */
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================================================
+   4. LAYOUT PRINCIPAL E MATÉRIAS
+   ========================================================================== */
 .main-container {
     max-width: 1200px;
     margin: 2.5rem auto;
@@ -184,9 +218,10 @@ body {
     }
 }
 
+/* Manchete Principal (Hero) */
 .hero-card {
     background-color: var(--clr-bg-card);
-    padding: 2rem;
+    padding: 2.25rem;
     border-radius: var(--radius-md);
     border: 1px solid var(--clr-border);
     box-shadow: var(--shadow-soft);
@@ -203,8 +238,8 @@ body {
 
 .hero-title {
     font-family: var(--font-serif);
-    font-size: 2.2rem;
-    line-height: 1.25;
+    font-size: 2.25rem;
+    line-height: 1.2;
     color: var(--clr-navy-dark);
     margin-bottom: 1rem;
 }
@@ -213,6 +248,7 @@ body {
     font-size: 1.05rem;
     color: var(--clr-text-muted);
     margin-bottom: 1.5rem;
+    line-height: 1.6;
 }
 
 .article-meta {
@@ -221,18 +257,21 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    border-top: 1px solid var(--clr-border);
+    padding-top: 1rem;
 }
 
+/* Divisores de Seção */
 .section-divider {
     display: flex;
     align-items: center;
-    margin: 2rem 0;
+    margin: 2.5rem 0 1.5rem 0;
 }
 
 .section-divider span {
     font-family: var(--font-serif);
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1.25rem;
+    font-weight: 700;
     color: var(--clr-navy-dark);
     padding-right: 1rem;
 }
@@ -244,6 +283,7 @@ body {
     background-color: var(--clr-border);
 }
 
+/* Grid de Notícias Secundárias */
 .news-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -259,7 +299,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .news-card:hover {
@@ -293,14 +333,19 @@ body {
     font-weight: 700;
     font-size: 0.85rem;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color var(--transition-fast);
 }
 
-.card-link:hover {
+.card-link:hover,
+.card-link:focus-visible {
     color: var(--clr-red-primary);
+    text-decoration: underline;
+    outline: none;
 }
 
-/* --- SIDEBAR --- */
+/* ==========================================================================
+   5. BARRA LATERAL (SIDEBAR)
+   ========================================================================== */
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -334,7 +379,7 @@ body {
 
 .quote-author {
     font-size: 0.8rem;
-    font-weight: bold;
+    font-weight: 700;
     color: var(--clr-text-muted);
 }
 
@@ -381,7 +426,9 @@ body {
     border-bottom: none;
 }
 
-/* --- RODAPÉ --- */
+/* ==========================================================================
+   6. RODAPÉ E RESPONSIVIDADE
+   ========================================================================== */
 .main-footer {
     background-color: var(--clr-navy-dark);
     color: #94a3b8;
@@ -425,11 +472,13 @@ body {
     color: #94a3b8;
     text-decoration: none;
     font-size: 0.875rem;
-    transition: color 0.2s;
+    transition: color var(--transition-fast);
 }
 
-.footer-nav a:hover {
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
     color: #ffffff;
+    outline: none;
 }
 
 .footer-bottom {
@@ -441,6 +490,7 @@ body {
     font-size: 0.8rem;
 }
 
+/* Ajustes Responsivos */
 @media (max-width: 640px) {
     .header-container {
         flex-direction: column;
@@ -448,6 +498,15 @@ body {
     }
 
     .hero-title {
-        font-size: 1.6rem;
+        font-size: 1.65rem;
+    }
+
+    .hero-card {
+        padding: 1.5rem;
+    }
+
+    .top-bar-container {
+        flex-direction: column;
+        text-align: center;
     }
 }
