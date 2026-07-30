@@ -1,47 +1,78 @@
-/* --- RESET E VARIÁVEIS --- */
-* {
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================================================== */
+:root {
+    /* Paleta de Cores */
+    --clr-primary: #111827;      /* Azul escuro / Quase preto para cabeçalho e textos */
+    --clr-accent: #b91c1c;       /* Vermelho sóbrio para destaques e categorias */
+    --clr-accent-hover: #991b1b; /* Vermelho escuro para estados hover */
+    --clr-bg: #f3f4f6;           /* Cinza muito claro para o fundo da página */
+    --clr-surface: #ffffff;      /* Branco para cartões e containers */
+    --clr-text-main: #1f2937;    /* Texto principal com alto contraste */
+    --clr-text-muted: #4b5563;   /* Texto secundário/subtítulos */
+    --clr-border: #e5e7eb;       /* Borda suave para separação */
+
+    /* Tipografia e Dimensões */
+    --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    
+    /* Sombra e Efeitos */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset de Estilos */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
 }
 
-:root {
-    --primary: #1a252f;
-    --accent: #c0392b;
-    --bg-light: #f8f9fa;
-    --text-dark: #2c3e50;
-    --text-muted: #7f8c8d;
-    --white: #ffffff;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--bg-light);
-    color: var(--text-dark);
+    background-color: var(--clr-bg);
+    color: var(--clr-text-main);
+    font-family: var(--font-sans);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- CABEÇALHO --- */
+/* ==========================================================================
+   2. CABEÇALHO (HEADER & NAV)
+   ========================================================================== */
 header {
-    background-color: var(--primary);
-    color: var(--white);
+    background-color: var(--clr-primary);
+    color: var(--clr-surface);
     padding: 1.5rem 2rem;
-    border-bottom: 4px solid var(--accent);
+    border-bottom: 4px solid var(--clr-accent);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-md);
 }
 
-header .logo h1 {
-    font-size: 1.8rem;
-    letter-spacing: 1px;
+.logo h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--clr-surface);
 }
 
-header .logo p {
+.logo p {
     font-size: 0.85rem;
-    color: #bdc3c7;
+    color: #9ca3af;
+    margin-top: 0.2rem;
 }
 
 nav ul {
@@ -51,169 +82,242 @@ nav ul {
 }
 
 nav a {
-    color: var(--white);
+    color: #e5e7eb;
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 nav a:hover,
-nav a:focus {
-    color: var(--accent);
+nav a:focus-visible {
+    color: var(--clr-surface);
+    background-color: rgba(255, 255, 255, 0.1);
+    outline: none;
 }
 
-/* --- CONTEÚDO PRINCIPAL --- */
+/* ==========================================================================
+   3. ESTRUTURA PRINCIPAL (LAYOUT GRID)
+   ========================================================================== */
 .container {
     max-width: 1200px;
-    margin: 2rem auto;
+    margin: 2.5rem auto;
     padding: 0 1.5rem;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
 }
 
+@media (min-width: 850px) {
+    .container {
+        grid-template-columns: 2.2fr 1fr;
+    }
+}
+
+/* ==========================================================================
+   4. CARTÕES E NOTÍCIAS (MAIN)
+   ========================================================================== */
 /* Destaque Principal */
 .featured-card {
-    background: var(--white);
-    border-radius: 8px;
+    background: var(--clr-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--clr-border);
+    box-shadow: var(--shadow-sm);
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     margin-bottom: 2rem;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.featured-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
 }
 
 .featured-content {
-    padding: 1.5rem;
+    padding: 2rem;
 }
 
 .category {
-    background-color: var(--accent);
-    color: var(--white);
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
+    background-color: var(--clr-accent);
+    color: var(--clr-surface);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
     text-transform: uppercase;
-    font-weight: bold;
-    border-radius: 3px;
+    letter-spacing: 0.5px;
+    border-radius: var(--radius-sm);
     display: inline-block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .featured-content h2 {
-    font-size: 1.8rem;
+    font-size: 1.85rem;
+    line-height: 1.3;
+    color: var(--clr-primary);
     margin-bottom: 0.8rem;
 }
 
-/* Grid de Notícias Secundárias */
+.featured-content p {
+    color: var(--clr-text-muted);
+    font-size: 1.05rem;
+}
+
+/* Grid de Noticias Secundarias */
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
 }
 
 .card {
-    background: var(--white);
-    border-radius: 8px;
-    padding: 1.25rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
 }
 
 .card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+    line-height: 1.4;
+    color: var(--clr-primary);
+    margin-top: 0.5rem;
+    margin-bottom: 0.6rem;
 }
 
 .card p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-bottom: 1rem;
+    font-size: 0.925rem;
+    color: var(--clr-text-muted);
+    margin-bottom: 1.25rem;
 }
 
 .read-more {
-    color: var(--accent);
+    color: var(--clr-accent);
     text-decoration: none;
-    font-weight: bold;
-    font-size: 0.85rem;
-    transition: opacity 0.3s ease;
+    font-weight: 700;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color var(--transition-fast);
 }
 
-.read-more:hover {
-    opacity: 0.8;
+.read-more:hover,
+.read-more:focus-visible {
+    color: var(--clr-accent-hover);
+    text-decoration: underline;
+    outline: none;
 }
 
-/* Sidebar */
+/* ==========================================================================
+   5. BARRA LATERAL (ASIDE)
+   ========================================================================== */
 aside {
-    background: var(--white);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
     height: fit-content;
 }
 
 aside h3 {
-    border-bottom: 2px solid var(--accent);
+    font-size: 1.25rem;
+    color: var(--clr-primary);
+    border-bottom: 3px solid var(--clr-accent);
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
 }
 
 .sidebar-desc {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 0.925rem;
+    color: var(--clr-text-muted);
+    margin-bottom: 1.5rem;
 }
 
 .interactive-section {
-    margin-top: 1.5rem;
-    background: #edf2f7;
-    padding: 1rem;
-    border-radius: 6px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+}
+
+.interactive-section h4 {
+    font-size: 1rem;
+    color: var(--clr-primary);
 }
 
 .interactive-section p {
-    font-size: 0.85rem;
-    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--clr-text-muted);
+    margin-top: 0.4rem;
 }
 
 .interactive-section button {
-    background-color: var(--primary);
-    color: var(--white);
+    background-color: var(--clr-primary);
+    color: var(--clr-surface);
     border: none;
-    padding: 0.6rem 1rem;
-    margin-top: 0.8rem;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     width: 100%;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .interactive-section button:hover {
-    background-color: var(--accent);
+    background-color: var(--clr-accent);
 }
 
-/* --- RODAPÉ --- */
+.interactive-section button:active {
+    transform: scale(0.98);
+}
+
+.interactive-section button:focus-visible {
+    outline: 2px solid var(--clr-accent);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   6. RODAPÉ E RESPONSIVIDADE
+   ========================================================================== */
 footer {
-    background-color: var(--primary);
-    color: var(--white);
+    background-color: var(--clr-primary);
+    color: #9ca3af;
     text-align: center;
-    padding: 1.5rem;
-    margin-top: 3rem;
-    font-size: 0.9rem;
+    padding: 2rem 1.5rem;
+    margin-top: 4rem;
+    font-size: 0.875rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* --- RESPONSIVIDADE --- */
-@media (max-width: 768px) {
-    .container {
-        grid-template-columns: 1fr;
-    }
-    
+@media (max-width: 640px) {
     header {
         flex-direction: column;
         text-align: center;
+        padding: 1.25rem 1rem;
     }
 
     nav ul {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .featured-content h2 {
+        font-size: 1.5rem;
     }
 }
