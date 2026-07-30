@@ -13,12 +13,12 @@
             <h1>VOZES DO AFEGANISTÃO</h1>
             <p>Jornalismo independente sobre os direitos das mulheres</p>
         </div>
-        <nav>
+        <nav aria-label="Navegação Principal">
             <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Educação</a></li>
-                <li><a href="#">Direitos Humanos</a></li>
-                <li><a href="#">Resistência</a></li>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#educacao">Educação</a></li>
+                <li><a href="#direitos">Direitos Humanos</a></li>
+                <li><a href="#resistencia">Resistência</a></li>
             </ul>
         </nav>
     </header>
@@ -26,7 +26,7 @@
     <div class="container">
         
         <main>
-            <article class="featured-card">
+            <article class="featured-card" id="educacao">
                 <div class="featured-content">
                     <span class="category">Educação</span>
                     <h2>Redes Clandestinas Mantêm Ensino para Meninas no Afeganistão</h2>
@@ -35,7 +35,7 @@
             </article>
 
             <section class="news-grid">
-                <article class="card">
+                <article class="card" id="direitos">
                     <div>
                         <span class="category">Sociedade</span>
                         <h3>O Impacto Econômico do Afastamento Feminino</h3>
@@ -44,7 +44,7 @@
                     <a href="#" class="read-more">Leia mais &rarr;</a>
                 </article>
 
-                <article class="card">
+                <article class="card" id="resistencia">
                     <div>
                         <span class="category">Internacional</span>
                         <h3>ONU Mantém Apelo por Direitos Fundamentais</h3>
@@ -62,7 +62,7 @@
             <div class="interactive-section">
                 <h4>Apoie a Causa</h4>
                 <p>Saiba como organizações internacionais estão ajudando mulheres afegãs.</p>
-                <button id="actionBtn">Como Ajudar</button>
+                <button type="button" id="actionBtn">Como Ajudar</button>
             </div>
         </aside>
 
